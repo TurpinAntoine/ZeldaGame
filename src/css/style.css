@@ -1,8 +1,20 @@
 .block{
-  background: black;
+  background: #454545;
 }
 
 td{
   width: 10vw;
   height: 6vw;
+}
+
+.pass{
+  background: #66CC99
+}
+
+.castle{
+  background: #ABB7B7;
+}
+
+.enter{
+  background: #F5D76E
 }
