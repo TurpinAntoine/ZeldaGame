@@ -7,8 +7,8 @@ var link= function(name, posX, posY)
   this.cross = new Array();
   this.transform = new Array();
   this.div;
-  this.createLink = function()
   
+  this.createLink = function()
   {
     
     this.div = document.createElement("div");
