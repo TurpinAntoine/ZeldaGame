@@ -1,5 +1,8 @@
 .block{
-  background: #454545;
+  background-image: url(../image/block.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #78c380;
 }
 
 td{
@@ -8,7 +11,7 @@ td{
 }
 
 .pass{
-  background: #66CC99
+  background: #78c380;
 }
 
 .castle{
@@ -16,5 +19,14 @@ td{
 }
 
 .enter{
-  background: #F5D76E
+  background: #F5D76E;
+}
+
+.zelda{
+background-image:url(zelda.png);
+width:32px;
+height:32px;
+display:block;
+background-repeat: no-repeat;
+position:absolute;
 }

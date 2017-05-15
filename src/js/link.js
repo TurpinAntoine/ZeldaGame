@@ -1,3 +1,6 @@
+var mydata = map; //json
+//this.div.setAttribute("class", mydata[0].val0);
+
 var link= function(name, posX, posY)
 {
   
@@ -19,6 +22,14 @@ var link= function(name, posX, posY)
     this.afficherLink();
     
     
+  }
+  
+  this.createTest = function(){
+    this.div = document.createElement("div");
+    this.div.setAttribute("class", mydata[0].val0);
+        this.div.style.left = this.posX + "px";
+    
+    this.afficherLink();
   }
   
   this.afficherLink = function()
@@ -106,12 +117,6 @@ var zelda1 = new link("Pierre", 465, 265);
 zelda1.cross=[122,100,115,113];
 zelda1.transform=[101, 97];
 zelda1.createLink();
+zelda1.createTest();
 zelda1.bougerLink();
-var zelda2 = new link("Paul", 67, 78);
-zelda2.createLink();
-zelda2.cross=[111,109,108,107];
-zelda2.bougerLink();
-var zelda3 = new link("Jacques", 120, 68);
-zelda3.createLink();
-zelda3.cross=[90,68,83,81];
-zelda3.bougerLink();
+
