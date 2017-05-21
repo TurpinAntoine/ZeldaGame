@@ -187,3 +187,11 @@ zelda1.createLink();
 zelda1.bougerLink();
 zelda1.attackDirection = [];
 zelda1.attack();
+
+var monster = function(type, posX, posY) {
+  
+  this.type = type;
+  this.posX = posX;
+  this.posY = posY;
+  
+}
