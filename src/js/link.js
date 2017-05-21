@@ -46,6 +46,7 @@ var link = function (name, posX, posY) {
   this.cross = new Array();
   this.transform = new Array();
   this.div;
+  this.attackDirection;
 
   this.createLink = function () {
 
@@ -71,6 +72,8 @@ var link = function (name, posX, posY) {
       if (e.keyCode == that.cross[0]) {
 
         that.posY -= 10;
+        that.attackDirection = 1;
+        console.log(that.attackDirection);
 
         if (e.keyCode == that.transform[1])
           that.div.setAttribute("class", "zelda");
@@ -82,6 +85,8 @@ var link = function (name, posX, posY) {
 
       } else if (e.keyCode == that.cross[1]) {
         that.posX += 10;
+        that.attackDirection = 2;
+        console.log(that.attackDirection);
         if (e.keyCode == that.transform[1])
           that.div.setAttribute("class", "zelda");
         that.div.style.backgroundPosition = "0 -64px";
@@ -92,6 +97,8 @@ var link = function (name, posX, posY) {
       } else if (e.keyCode == that.cross[2]) {
 
         that.posY += 10;
+        that.attackDirection = 3;
+        console.log(that.attackDirection);
         if (e.keyCode == that.transform[1])
           that.div.setAttribute("class", "zelda");
         that.div.style.backgroundPosition = "0 0";
@@ -102,6 +109,8 @@ var link = function (name, posX, posY) {
 
       } else if (e.keyCode == that.cross[3]) {
         that.posX -= 10;
+        that.attackDirection = 4;
+        console.log(that.attackDirection);
         if (e.keyCode == that.transform[1])
           that.div.setAttribute("class", "zelda");
         that.div.style.backgroundPosition = "-64px -32px";
@@ -131,12 +140,50 @@ var link = function (name, posX, posY) {
 
 
   }
+  
+  this.attack = function(){
+    
+    var that = this;
+    window.addEventListener('keypress', function (e) {
+    e.preventDefault();
+    if (e.keyCode == that.cross[4]){
+      
+      if (that.attackDirection == 1){
+        
+        console.log('up');
+
+      }
+      
+      else if (that.attackDirection == 2){
+        
+        console.log('right');
+        
+      }
+      
+      else if (that.attackDirection == 3){
+        
+        console.log('down');
+        
+      }
+      
+      else if (that.attackDirection == 4){
+        
+        console.log('left');
+     
+      }
+      
+    }
+    }, false);
+  }
+                            
 
 }
 
 var zelda1 = new link("Pierre", 465, 265);
-zelda1.cross = [122, 100, 115, 113];
+zelda1.cross = [122, 100, 115, 113, 32];
 zelda1.transform = [101, 97];
 zelda1.createLink();
 //zelda1.createTest();
 zelda1.bougerLink();
+zelda1.attackDirection = [];
+zelda1.attack();
