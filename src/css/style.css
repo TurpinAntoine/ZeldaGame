@@ -1,3 +1,9 @@
+body{
+  width: 940px;
+  height: auto;
+  line-height: 0;
+}
+
 .block{
   background-image: url(../image/block.png);
   background-repeat: no-repeat;
@@ -5,31 +11,35 @@
   background-color: #78c380;
   width: 50px;
   height: 50px;
+  display: inline-block;
 }
 
 .pass{
   background: #78c380;
   width: 50px;
   height: 50px;
+  display: inline-block;
 }
 
 .castle{
   background: #ABB7B7;
   width: 50px;
   height: 50px;
+  display: inline-block;
 }
 
 .enter{
-  background: #F5D76E;
+  background: black;
   width: 50px;
   height: 50px;
+  display: inline-block;
 }
 
 .zelda{
-background-image:url(zelda.png);
-width:32px;
-height:32px;
-display:block;
-background-repeat: no-repeat;
-position:absolute;
+  background-image:url(zelda.png);
+  width:32px;
+  height:32px;
+  display:block;
+  background-repeat: no-repeat;
+  position:absolute;
 }
