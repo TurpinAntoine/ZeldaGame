@@ -1,16 +1,4 @@
-var mydata = map; //json
-//this.div.setAttribute("class", mydata[0].val0);
-//var jambon = 0;
-//
-//var maping = function(name){
-//  
-//  for(){
-//    this.div = document.createElement("div");
-//    this.div.setAttribute("class", mydata[jambon].val0);
-//    
-//    this.afficherTest();
-//  }
-//}
+var mydata = map;
 
 var maping = function () { 
 
@@ -54,7 +42,6 @@ var link = function (name, posX, posY) {
     this.div.setAttribute("class", "zelda");
     this.div.style.top = this.posY + "px";
     this.div.style.left = this.posX + "px";
-
     this.afficherLink();
 
 
@@ -73,50 +60,38 @@ var link = function (name, posX, posY) {
 
         that.posY -= 10;
         that.attackDirection = 1;
-        console.log(that.attackDirection);
-
         if (e.keyCode == that.transform[1])
-          that.div.setAttribute("class", "zelda");
+        that.div.setAttribute("class", "zelda");
         that.div.style.backgroundPosition = "0 -96px";
-        setTimeout(function () {
-          that.div.style.backgroundPosition = "-64px -96px"
-        }, 200);
+       
+        
 
 
       } else if (e.keyCode == that.cross[1]) {
         that.posX += 10;
         that.attackDirection = 2;
-        console.log(that.attackDirection);
         if (e.keyCode == that.transform[1])
-          that.div.setAttribute("class", "zelda");
+        that.div.setAttribute("class", "zelda");
         that.div.style.backgroundPosition = "0 -64px";
-        setTimeout(function () {
-          that.div.style.backgroundPosition = "-64px -64px"
-        }, 200);
+       
 
       } else if (e.keyCode == that.cross[2]) {
 
         that.posY += 10;
         that.attackDirection = 3;
-        console.log(that.attackDirection);
         if (e.keyCode == that.transform[1])
-          that.div.setAttribute("class", "zelda");
+        that.div.setAttribute("class", "zelda");
         that.div.style.backgroundPosition = "0 0";
-        setTimeout(function () {
-          that.div.style.backgroundPosition = "-64px 0"
-        }, 200);
+        
 
 
       } else if (e.keyCode == that.cross[3]) {
         that.posX -= 10;
         that.attackDirection = 4;
-        console.log(that.attackDirection);
         if (e.keyCode == that.transform[1])
           that.div.setAttribute("class", "zelda");
         that.div.style.backgroundPosition = "-64px -32px";
-        setTimeout(function () {
-          that.div.style.backgroundPosition = "0px -32px"
-        }, 200);
+        
 
       } else if (e.keyCode == that.transform[0])
 
@@ -140,7 +115,6 @@ var link = function (name, posX, posY) {
 
 
   }
-  
   this.attack = function(){
     
     var that = this;
@@ -150,25 +124,37 @@ var link = function (name, posX, posY) {
       
       if (that.attackDirection == 1){
         
-        console.log('up');
+        that.div.style.backgroundPosition = "-96px -96px";
+        setTimeout(function () {
+          that.div.style.backgroundPosition = "-64px -96px"
+        }, 200);
 
       }
       
       else if (that.attackDirection == 2){
         
-        console.log('right');
+        that.div.style.backgroundPosition = "-96px -64px";
+        setTimeout(function () {
+          that.div.style.backgroundPosition = "-64px -64px"
+        }, 200);
         
       }
       
       else if (that.attackDirection == 3){
         
-        console.log('down');
+        that.div.style.backgroundPosition = "-96px 0";
+        setTimeout(function () {
+          that.div.style.backgroundPosition = "-64px 0"
+        }, 200);
         
       }
       
       else if (that.attackDirection == 4){
         
-        console.log('left');
+        that.div.style.backgroundPosition = "-96px -32px";
+        setTimeout(function () {
+          that.div.style.backgroundPosition = "0px -32px"
+        }, 200);
      
       }
       
@@ -188,10 +174,33 @@ zelda1.bougerLink();
 zelda1.attackDirection = [];
 zelda1.attack();
 
-var monster = function(type, posX, posY) {
+// Mobs 
+
+var monster = function(posX, posY) { 
   
-  this.type = type;
-  this.posX = posX;
-  this.posY = posY;
+  this.posX = Math.floor(Math.random() * 800);
+  this.posY = Math.floor(Math.random() * 800);
+  this.div; 
   
-}
+  this.createMob = function () { 
+    
+    this.div = document.createElement("div"); this.div.setAttribute("class", "mob"); 
+    this.div.style.backgroundPosition = "-128px -32px";
+    this.div.style.top = this.posY + "px"; 
+    this.div.style.left = this.posX + "px"; 
+    this.displayMob(); 
+  } 
+  
+  this.displayMob = function () {
+    
+    document.querySelector("body").appendChild(this.div); 
+  } 
+  
+  
+} 
+
+
+var monster1 = new monster(this.posY, this.posX);
+monster1.createMob();
+
+
