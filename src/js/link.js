@@ -130,10 +130,13 @@ var link = function (name, posX, posY) {
       var newPosX = this.posX + dirX;
       var newPosY = this.posY + dirY;
       console.log(newPosX + '-' + newPosY);
+      console.log(dirX + '-' + dirY);
       
-      var blockYMin = Math.floor(newPosY/ grid);
-      var blockYMax = Math.floor((newPosY + 4) / grid);
+      var blockYMin = Math.floor((newPosY+15)/ grid);
+      var blockYMax = Math.floor((newPosY + 15) / grid);
       var blockX = Math.floor((newPosX + 14.9) / grid);
+      
+      console.log(map[blockYMin]["val" + blockX]);
       
       if ( (map[blockYMin]["val" + blockX] == "pass" && map[blockYMax]["val" + blockX] == "pass") || (map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter") ) {
         return true;
