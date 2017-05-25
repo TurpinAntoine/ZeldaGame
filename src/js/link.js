@@ -42,6 +42,7 @@ var link = function (name, posX, posY) {
   this.transform = new Array();
   this.div;
   this.attackDirection;
+  this.life = 10;
 
   this.createLink = function () {
 
@@ -129,21 +130,42 @@ var link = function (name, posX, posY) {
       var bool = false;
       var newPosX = this.posX + dirX;
       var newPosY = this.posY + dirY;
-      console.log(newPosX + '-' + newPosY);
-      console.log(dirX + '-' + dirY);
       
       var blockYMin = Math.floor((newPosY+15)/ grid);
       var blockYMax = Math.floor((newPosY + 15) / grid);
       var blockX = Math.floor((newPosX + 14.9) / grid);
       
-      console.log(map[blockYMin]["val" + blockX]);
+      
+      
+      var monsterXmax = monster1.posX+14;
+      var monsterXmin = monster1.posX;
+      var monsterYmax = monster1.posY+14;
+      var monsterYmin = monster1.posY;
+      
+      console.log(monsterYmax+" max");
+      console.log(monsterYmin+" min");
+      console.log(newPosX+" link x");
+      console.log(newPosY+" link y");
+      
+      
+      if ( (newPosY >= monsterYmin && newPosY <= monsterYmax ) && (newPosX >= monsterXmin && newPosX <= monsterXmax ) ){
+        
+        this.life -= 1;
+        console.log(this.life);
+      }
+
       
       if ( (map[blockYMin]["val" + blockX] == "pass" && map[blockYMax]["val" + blockX] == "pass") || (map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter") ) {
         return true;
         
         }
-      // console.log(bool);
-      return false;
+      else{
+        return false;
+      }
+      
+      
+
+      
     }
       
 
@@ -161,7 +183,9 @@ var link = function (name, posX, posY) {
         setTimeout(function () {
           that.div.style.backgroundPosition = "-64px -96px"
         }, 200);
-
+        
+      
+        
       }
       
       else if (that.attackDirection == 2){
@@ -214,6 +238,7 @@ var monster = function(posX, posY) {
   this.posX = Math.floor(Math.random() * 800);
   this.posY = Math.floor(Math.random() * 800);
   this.div; 
+  this.life = 1;
   
   this.createMob = function () { 
     
@@ -229,11 +254,12 @@ var monster = function(posX, posY) {
     document.querySelector("body").appendChild(this.div); 
   } 
   
-  
+  console.log(this.posX);
 } 
+
 
 
 var monster1 = new monster(this.posY, this.posX);
 monster1.createMob();
 
-
+var monsterCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
