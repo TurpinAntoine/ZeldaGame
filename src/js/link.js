@@ -26,18 +26,16 @@ var maping = function () {
 var test = new maping()
 test.createTest();
 
-
-
-
-
-
-
+var posX = posX;
+var posY = posY;
 
 var link = function (name, posX, posY) {
 
   this.name = name;
   this.posX = posX;
   this.posY = posY;
+  globposX = posX;
+  globposY = posY;
   this.cross = new Array();
   this.transform = new Array();
   this.div;
@@ -104,6 +102,8 @@ var link = function (name, posX, posY) {
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
           that.div.style.backgroundPosition = "-64px -32px";
+          
+          
         }
 
       } else if (e.keyCode == that.transform[0])
@@ -272,17 +272,38 @@ var monster = function (posX, posY) {
   this.displayMob = function () {
 
     document.querySelector("body").appendChild(this.div);
+
+    
+  }
+  
+  this.moveMob = function () {
+    
+    var that = this;
+    
+    setInterval(function() {
+      
+      
+          that.posX += Math.cos(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
+          that.posY += Math.sin(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
+          that.div.style.top = that.posY + "px";
+          that.div.style.left = that.posX + "px";
+          
+    }, 50);
   }
 
-  console.log(this.posX);
+
 }
-
-
 
 var monster1 = new monster(this.posY, this.posX);
 monster1.createMob();
+monster1.displayMob();
+monster1.moveMob();
+var monster2 = new monster(this.posY * .5, this.posX * .5);
+monster2.createMob();
+monster2.displayMob();
+monster2.moveMob();
 zelda1.attackDirection = [];
 zelda1.attack();
 
 
-var monsterCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var monsterCount = [1, 2, 3, 4, 5];
