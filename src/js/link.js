@@ -1,4 +1,5 @@
 var mydata = map;
+var mydata2 = map2;
 var grid = 50;
 
 
@@ -6,8 +7,8 @@ var maping = function () {
 
   this.createTest = function () {
 
-    for (x = 0; x < map.length; x++) {
-      for (y = 0; y < map.length; y++) {
+    for (x = 0; x < mydata.length; x++) {
+      for (y = 0; y < mydata.length; y++) {
         var value = "val" + y
         this.div = document.createElement("div");
         this.div.setAttribute("class", mydata[x][value]);
