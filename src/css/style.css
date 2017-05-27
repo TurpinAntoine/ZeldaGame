@@ -15,21 +15,30 @@ body{
 }
 
 .pass{
-  background: #78c380;
+  background-image: url(../image/pass.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #78c380;
   width: 50px;
   height: 50px;
   display: inline-block;
 }
 
 .castle{
-  background: #ABB7B7;
+  background-image: url(../image/castle.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #78c380;
   width: 50px;
   height: 50px;
   display: inline-block;
 }
 
 .enter{
-  background: black;
+  background-image: url(../image/enter.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #78c380;
   width: 50px;
   height: 50px;
   display: inline-block;
