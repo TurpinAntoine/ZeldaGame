@@ -4,6 +4,10 @@ body{
   line-height: 0;
 }
 
+
+/******** MAP 1 *********/
+
+
 .block{
   background-image: url(../image/block.png);
   background-repeat: no-repeat;
@@ -55,14 +59,53 @@ body{
 }
 
 .mob{
-  
   background-image:url(zelda.png);
   width:32px;
   height:32px;
   display:block;
   background-repeat: no-repeat;
-  position:absolute;
-  
-  
+  position:absolute; 
 }
 
+
+/******** MAP 2 *********/
+
+.block1{
+  background-image: url(../image/block1.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #e0c078;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+.pass1{
+  background-image: url(../image/pass1.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #e0c078;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+.castle1{
+  background-image: url(../image/castle1.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #e0c078;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+.enter1{
+  background-image: url(../image/enter.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #e0c078;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
