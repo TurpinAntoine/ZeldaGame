@@ -102,8 +102,8 @@ var link = function (name, posX, posY) {
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
           that.div.style.backgroundPosition = "-64px -32px";
-          
-          
+
+
         }
 
       } else if (e.keyCode == that.transform[0])
@@ -173,15 +173,18 @@ var link = function (name, posX, posY) {
 
 
 
-    var monsterXmax = monster1.posX + 30;
-    var monsterXmin = monster1.posX;
-    var monsterYmax = monster1.posY + 30;
-    var monsterYmin = monster1.posY;
+
 
     var that = this;
     window.addEventListener('keypress', function (e) {
+
+
       e.preventDefault();
       if (e.keyCode == that.cross[4]) {
+        var monsterXmax = monster1.posX + 30;
+        var monsterXmin = monster1.posX;
+        var monsterYmax = monster1.posY + 30;
+        var monsterYmin = monster1.posY;
 
         if (that.attackDirection == 1) {
 
@@ -273,21 +276,25 @@ var monster = function (posX, posY) {
 
     document.querySelector("body").appendChild(this.div);
 
-    
+
   }
-  
-  this.moveMob = function () {
+
+  this.moveMob = function () { 
+    
+
+    
     
     var that = this;
-    
-    setInterval(function() {
-      
-      
-          that.posX += Math.cos(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
-          that.posY += Math.sin(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
-          that.div.style.top = that.posY + "px";
-          that.div.style.left = that.posX + "px";
-          
+
+    setInterval(function () {
+        
+      that.posX += Math.cos(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
+      that.posY += Math.sin(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
+      that.div.style.top = that.posY + "px";
+      that.div.style.left = that.posX + "px";
+
+
+
     }, 50);
   }
 
@@ -298,12 +305,6 @@ var monster1 = new monster(this.posY, this.posX);
 monster1.createMob();
 monster1.displayMob();
 monster1.moveMob();
-var monster2 = new monster(this.posY * .5, this.posX * .5);
-monster2.createMob();
-monster2.displayMob();
-monster2.moveMob();
+
 zelda1.attackDirection = [];
 zelda1.attack();
-
-
-var monsterCount = [1, 2, 3, 4, 5];
