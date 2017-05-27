@@ -2,6 +2,14 @@ var mydata = map;
 var mydata2 = map2;
 var grid = 50;
 
+function redirMap2() {
+  document.location.href = "map2.html";
+}
+
+function monsterLife() {
+  monster1.life -= 1;
+  console.log(monster1.life + ' mob life');
+}
 
 var maping = function () {
 
@@ -196,10 +204,11 @@ var link = function (name, posX, posY) {
 
 
           if ((newPosY >= monsterYmin && newPosY <= monsterYmax) && (newPosX >= monsterXmin && newPosX <= monsterXmax)) {
-            monster1.life -= 1;
-            console.log(monster1.life + ' mob life');
+            monsterLife();
           }
-
+          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
+            redirMap2();
+          }
 
         } else if (that.attackDirection == 2) {
 
@@ -209,8 +218,10 @@ var link = function (name, posX, posY) {
           }, 200);
 
           if ((newPosY >= monsterYmin && newPosY <= monsterYmax) && (newPosX >= monsterXmin && newPosX <= monsterXmax)) {
-            monster1.life -= 1;
-            console.log(monster1.life + ' mob life');
+            monsterLife();
+          }
+          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
+            redirMap2();
           }
 
         } else if (that.attackDirection == 3) {
@@ -221,8 +232,10 @@ var link = function (name, posX, posY) {
           }, 200);
 
           if ((newPosY >= monsterYmin && newPosY <= monsterYmax) && (newPosX >= monsterXmin && newPosX <= monsterXmax)) {
-            monster1.life -= 1;
-            console.log(monster1.life + ' mob life');
+            monsterLife();
+          }
+          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
+            redirMap2();
           }
 
         } else if (that.attackDirection == 4) {
@@ -233,8 +246,10 @@ var link = function (name, posX, posY) {
           }, 200);
 
           if ((newPosY >= monsterYmin && newPosY <= monsterYmax) && (newPosX >= monsterXmin && newPosX <= monsterXmax)) {
-            monster1.life -= 1;
-            console.log(monster1.life + ' mob life');
+            monsterLife();
+          }
+          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
+            redirMap2();
           }
 
         }
@@ -280,15 +295,15 @@ var monster = function (posX, posY) {
 
   }
 
-  this.moveMob = function () { 
-    
+  this.moveMob = function () {
 
-    
-    
+
+
+
     var that = this;
 
     setInterval(function () {
-        
+
       that.posX += Math.cos(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
       that.posY += Math.sin(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
       that.div.style.top = that.posY + "px";
