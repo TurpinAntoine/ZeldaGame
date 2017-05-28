@@ -4,6 +4,15 @@ body{
   line-height: 0;
 }
 
+.rightMenu {
+
+  background-image: url(../image/rightmenu.jpg);
+  position: absolute;
+  float: right;
+  right: 0;
+  height: 100%;
+  width: 380px;
+}
 
 /******** MAP 1 *********/
 
