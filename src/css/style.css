@@ -68,6 +68,16 @@ body{
   position:absolute;
 }
 
+.boss{
+  background-image:url(../image/boss.png);
+  width:85px;
+  height:85px;
+  display:block;
+  background-repeat: no-repeat;
+  position:absolute;
+}
+
+
 .heart {
 
   width: 10px;

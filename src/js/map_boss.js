@@ -1,7 +1,7 @@
 var mydata = map;
 var mydata2 = map2;
 var grid = 50;
-var mobCount = 0; 
+var mobCount = 0;
 
 
 var bossDeath = document.getElementById('bossDeath')
@@ -436,13 +436,14 @@ var monster = function (posX, posY) {
   this.div;
   this.life = 10;
   this.lifeStatut = 1;
+  this.animationState = 0;
   this.mobLifeBar;
 
   this.createMob = function () {
 
     this.div = document.createElement("div");
-    this.div.setAttribute("class", "mob");
-    this.div.style.backgroundPosition = "-125px 0px";
+    this.div.setAttribute("class", "boss");
+    this.div.style.backgroundPosition = "0px 0px";
     this.div.style.top = this.posY + "px";
     this.div.style.left = this.posX + "px";
     this.displayMob();
@@ -463,8 +464,8 @@ var monster = function (posX, posY) {
 
       that.posX += Math.cos(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
       that.posY += Math.sin(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
-      that.div.style.top = that.posY + "px";
-      that.div.style.left = (that.posX - 20) + "px";
+      that.div.style.top = (that.posY - 50)+ "px";
+      that.div.style.left = that.posX + "px";
 
     }, 50);
   }
@@ -484,6 +485,32 @@ var monster = function (posX, posY) {
 
   }
 
+  this.animateMob = function (){
+
+      var that = this;
+      setInterval(function(){
+      if(that.animationState == 0){
+
+        setTimeout(function(){
+
+          that.div.style.backgroundPosition = "-85px 0";
+          that.animationState = 1;
+
+        }, 100)
+      }
+      if (that.animationState == 1){
+
+        setTimeout(function(){
+
+          that.div.style.backgroundPosition = "-170px 0";
+          that.animationState = 0;
+
+        }, 100)
+      }
+    }, 1000)
+
+  }
+
   this.despawnMob = function () {
 
     var that = this;
@@ -491,8 +518,8 @@ var monster = function (posX, posY) {
     that.div.style.transform = "rotate(90deg)";
     setTimeout(function () {
 
-      var elem = document.querySelector(".mob");
-      elem.classList.remove('mob');
+      var elem = document.querySelector(".boss");
+      elem.classList.remove('boss');
       document.querySelector("body").removeChild(that.div);
       elem.remove();
 
@@ -516,14 +543,14 @@ var monster = function (posX, posY) {
     this.mobLifeBar.style.top = "-10px";
     this.mobLifeBar.style.right = "0px";
     this.mobLifeBar.style.zIndex = "9";
-    this.mobLifeBar.style.backgroundColor = "#e67e22";
+    this.mobLifeBar.style.backgroundColor = "#2ecc71";
     this.displayMobLifeBar();
 
   }
 
   this.displayMobLifeBar = function () {
 
-    document.querySelector(".mob").appendChild(this.mobLifeBar);
+    document.querySelector(".boss").appendChild(this.mobLifeBar);
   }
 
   this.refreshMobLifebar = function () {
@@ -545,6 +572,7 @@ monster1.createMob();
 monster1.displayMob();
 monster1.moveMob();
 monster1.mobLife();
+monster1.animateMob();
 monster1.createMobLifeBar();
 monster1.refreshMobLifebar();
 
