@@ -52,6 +52,7 @@ var link = function (name, posX, posY) {
   this.heart;
   this.attackDirection;
   this.life = 10;
+  this.walkDirection = 1;
 
   this.createLink = function () {
 
@@ -102,8 +103,8 @@ var link = function (name, posX, posY) {
 
     this.heart = document.createElement("div");
     this.heart.setAttribute("class", "heart");
-    this.heart.style.top = Math.floor(Math.random() * 300) + "px";
-    this.heart.style.left = Math.floor(Math.random() * 300) + "px";
+    this.heart.style.top = Math.floor(Math.random() * 800) + "px";
+    this.heart.style.left = Math.floor(Math.random() * 800) + "px";
     this.displayHeart();
 
   }
@@ -127,8 +128,6 @@ var link = function (name, posX, posY) {
   }
 
 
-
-
   this.bougerLink = function () {
     var that = this;
     window.addEventListener('keypress', function (e) {
@@ -140,7 +139,18 @@ var link = function (name, posX, posY) {
           that.attackDirection = 1;
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
-          that.div.style.backgroundPosition = "0 -96px";
+
+            if (this.walkDirection == 1){
+
+              that.div.style.backgroundPosition = "0 -96px";
+              this.walkDirection = 0;
+            }
+            else {
+
+              that.div.style.backgroundPosition = "-64px -96px";
+              this.walkDirection = 1;
+            }
+
         }
 
 
@@ -151,7 +161,18 @@ var link = function (name, posX, posY) {
           that.attackDirection = 2;
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
-          that.div.style.backgroundPosition = "0 -64px";
+
+            if (this.walkDirection == 1){
+
+              that.div.style.backgroundPosition = "0 -64px";
+              this.walkDirection = 0;
+            }
+            else {
+
+              that.div.style.backgroundPosition = "-64px -64px";
+              this.walkDirection = 1;
+            }
+
         }
 
       } else if (e.keyCode == that.cross[2]) {
@@ -161,7 +182,19 @@ var link = function (name, posX, posY) {
           that.attackDirection = 3;
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
-          that.div.style.backgroundPosition = "0 0";
+
+            if (this.walkDirection == 1){
+
+              that.div.style.backgroundPosition = "0 0";
+              this.walkDirection = 0;
+            }
+            else {
+
+              that.div.style.backgroundPosition = "-64px 0";
+              this.walkDirection = 1;
+            }
+
+
         }
 
 
@@ -171,7 +204,18 @@ var link = function (name, posX, posY) {
           that.attackDirection = 4;
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
-          that.div.style.backgroundPosition = "-64px -32px";
+
+            if (this.walkDirection == 1){
+
+              that.div.style.backgroundPosition = "-64px -32px";
+              this.walkDirection = 0;
+            }
+            else {
+
+              that.div.style.backgroundPosition = "0 -32px";
+              this.walkDirection = 1;
+            }
+
 
 
         }
