@@ -462,6 +462,36 @@ var monster = function (posX, posY) {
 
     }
 
+    this.createMobLifeBar = function () {
+
+      this.mobLifeBar = document.createElement("div");
+      this.mobLifeBar.setAttribute("class", "mobmobLifeBar");
+      this.mobLifeBar.style.position = "relative";
+      this.mobLifeBar.style.width = "10px";
+      this.mobLifeBar.style.height = "5px";
+      this.mobLifeBar.style.top = "-10px";
+      this.mobLifeBar.style.right = "0px";
+      this.mobLifeBar.style.zIndex = "9";
+      this.mobLifeBar.style.backgroundColor = "#e67e22";
+      this.displayMobLifeBar();
+
+    }
+
+    this.displayMobLifeBar = function() {
+
+      document.querySelector(".mob").appendChild(this.mobLifeBar);
+    }
+
+    this.refreshMobLifebar = function(){
+
+        var that = this;
+        setInterval(function(){
+
+            that.mobLifeBar.style.width = (that.life * 10) + "px";
+        }, 1)
+
+    }
+
 
 
 }
@@ -471,6 +501,8 @@ monster1.createMob();
 monster1.displayMob();
 monster1.moveMob();
 monster1.mobLife();
+monster1.createMobLifeBar();
+monster1.refreshMobLifebar();
 
 
 zelda1.attackDirection = [];
