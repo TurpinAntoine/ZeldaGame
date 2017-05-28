@@ -448,8 +448,16 @@ var monster = function (posX, posY) {
 
     this.despawnMob = function () {
 
-      document.querySelector("body").removeChild(this.div);
-      this.lifeStatut = 0;
+      var that = this;
+      that.div.style.transition = "2s";
+      that.div.style.transform = "rotate(90deg)";
+      setTimeout(function(){
+
+         document.querySelector("body").removeChild(that.div);
+
+      }, 2000)
+
+      that.lifeStatut = 0;
 
 
     }
