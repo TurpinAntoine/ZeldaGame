@@ -74,12 +74,12 @@ var link = function (name, posX, posY) {
     this.lifebar = document.createElement("div");
     this.lifebar.setAttribute("class", "lifebar");
     this.lifebar.style.position = "absolute";
-    this.lifebar.style.width = "100px";
-    this.lifebar.style.height = "10px";
-    this.lifebar.style.top = "0";
-    this.lifebar.style.right = "0";
+    this.lifebar.style.width = "250px";
+    this.lifebar.style.height = "50px";
+    this.lifebar.style.top = "20px";
+    this.lifebar.style.right = "20px";
     this.lifebar.style.zIndex = "9";
-    this.lifebar.style.backgroundColor = "red";
+    this.lifebar.style.backgroundImage = "url('../ZeldaGame/src/image/lifebar.png')";
     this.displayLifeBar();
 
   }
@@ -94,7 +94,7 @@ var link = function (name, posX, posY) {
       var that = this;
       setInterval(function(){
 
-          that.lifebar.style.width = (that.life * 10) + "px";
+          that.lifebar.style.width = (that.life * 25) + "px";
       }, 1)
 
   }
