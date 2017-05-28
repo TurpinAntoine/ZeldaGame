@@ -248,20 +248,6 @@ var link = function (name, posX, posY) {
 
         }
 
-      } else if (e.keyCode == that.transform[0])
-
-      {
-
-        that.div.setAttribute("class", "darkZelda");
-
-      }
-
-      if (e.keyCode == that.transform[1])
-
-      {
-
-        that.div.setAttribute("class", "zelda");
-
       }
 
       that.div.style.top = that.posY + "px";
