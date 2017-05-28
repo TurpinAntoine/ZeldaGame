@@ -398,6 +398,8 @@ var monster = function (posX, posY) {
   this.posY = Math.floor(Math.random() * 800);
   this.div;
   this.life = 3;
+  this.lifeStatut = 1;
+  this.mobLifeBar;
 
   this.createMob = function () {
 
@@ -430,16 +432,27 @@ var monster = function (posX, posY) {
     }, 50);
   }
 
+    this.mobLife = function(){
 
-  this.mobDespawn = function(){
+      var that = this;
+      setInterval(function(){
 
-    console.log(monster1.life);
-    if (monster1.life == 2)(
+        if (that.life == 0 && that.lifeStatut == 1){
 
-      console.log("lourd")
-    )
-  }
+          that.despawnMob();
 
+        }
+      }, 1)
+
+    }
+
+    this.despawnMob = function () {
+
+      document.querySelector("body").removeChild(this.div);
+      this.lifeStatut = 0;
+
+
+    }
 
 
 
@@ -449,7 +462,7 @@ var monster1 = new monster(this.posY, this.posX, this.life);
 monster1.createMob();
 monster1.displayMob();
 monster1.moveMob();
-monster1.mobDespawn();
+monster1.mobLife();
 
 
 zelda1.attackDirection = [];
