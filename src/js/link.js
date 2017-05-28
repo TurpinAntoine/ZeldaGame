@@ -1,15 +1,29 @@
 var mydata = map;
 var mydata2 = map2;
 var grid = 50;
+var mobCount = 0;
 
 function redirMap2() {
   document.location.href = "map2.html";
+}
+
+function linkLife()  {
+  zelda1.life -= 1;
+  monster1.posY -= 30;
+  console.log(this.life + ' link life');
+
 }
 
 function monsterLife() {
   monster1.life -= 1;
   console.log(monster1.life + ' mob life');
 }
+
+function resetMonsterLife() {
+  monster1.life = 3;
+  console.log(monster1.life + ' reset life mob');
+}
+
 
 var maping = function () {
 
@@ -34,6 +48,9 @@ var maping = function () {
 }
 var test = new maping()
 test.createTest();
+
+
+    
 
 var posX = posX;
 var posY = posY;
@@ -84,22 +101,22 @@ var link = function (name, posX, posY) {
 
   }
 
-  this.displayLifeBar = function() {
+  this.displayLifeBar = function () {
 
     document.querySelector("body").appendChild(this.lifebar);
   }
 
-  this.refreshLifebar = function(){
+  this.refreshLifebar = function () {
 
-      var that = this;
-      setInterval(function(){
+    var that = this;
+    setInterval(function () {
 
-          that.lifebar.style.width = (that.life * 25) + "px";
-      }, 1)
+      that.lifebar.style.width = (that.life * 25) + "px";
+    }, 1)
 
   }
 
-  this.createHeart = function(){
+  this.createHeart = function () {
 
     this.heart = document.createElement("div");
     this.heart.setAttribute("class", "heart");
@@ -109,18 +126,17 @@ var link = function (name, posX, posY) {
 
   }
 
-  this.displayHeart = function() {
+  this.displayHeart = function () {
 
     document.querySelector("body").appendChild(this.heart);
   }
 
-  this.addLife = function() {
+  this.addLife = function () {
 
     var that = this;
-    setInterval(function(){
+    setInterval(function () {
 
-      if (that.posX && that.posY == that.heart.style.top && that.heart.style.left)
-      {
+      if (that.posX && that.posY == that.heart.style.top && that.heart.style.left) {
 
         console.log('LOOOURD')
       }
@@ -140,16 +156,15 @@ var link = function (name, posX, posY) {
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
 
-            if (this.walkDirection == 1){
+          if (this.walkDirection == 1) {
 
-              that.div.style.backgroundPosition = "0 -96px";
-              this.walkDirection = 0;
-            }
-            else {
+            that.div.style.backgroundPosition = "0 -96px";
+            this.walkDirection = 0;
+          } else {
 
-              that.div.style.backgroundPosition = "-64px -96px";
-              this.walkDirection = 1;
-            }
+            that.div.style.backgroundPosition = "-64px -96px";
+            this.walkDirection = 1;
+          }
 
         }
 
@@ -162,16 +177,15 @@ var link = function (name, posX, posY) {
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
 
-            if (this.walkDirection == 1){
+          if (this.walkDirection == 1) {
 
-              that.div.style.backgroundPosition = "0 -64px";
-              this.walkDirection = 0;
-            }
-            else {
+            that.div.style.backgroundPosition = "0 -64px";
+            this.walkDirection = 0;
+          } else {
 
-              that.div.style.backgroundPosition = "-64px -64px";
-              this.walkDirection = 1;
-            }
+            that.div.style.backgroundPosition = "-64px -64px";
+            this.walkDirection = 1;
+          }
 
         }
 
@@ -183,16 +197,15 @@ var link = function (name, posX, posY) {
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
 
-            if (this.walkDirection == 1){
+          if (this.walkDirection == 1) {
 
-              that.div.style.backgroundPosition = "0 0";
-              this.walkDirection = 0;
-            }
-            else {
+            that.div.style.backgroundPosition = "0 0";
+            this.walkDirection = 0;
+          } else {
 
-              that.div.style.backgroundPosition = "-64px 0";
-              this.walkDirection = 1;
-            }
+            that.div.style.backgroundPosition = "-64px 0";
+            this.walkDirection = 1;
+          }
 
 
         }
@@ -205,16 +218,15 @@ var link = function (name, posX, posY) {
           if (e.keyCode == that.transform[1])
             that.div.setAttribute("class", "zelda");
 
-            if (this.walkDirection == 1){
+          if (this.walkDirection == 1) {
 
-              that.div.style.backgroundPosition = "-64px -32px";
-              this.walkDirection = 0;
-            }
-            else {
+            that.div.style.backgroundPosition = "-64px -32px";
+            this.walkDirection = 0;
+          } else {
 
-              that.div.style.backgroundPosition = "0 -32px";
-              this.walkDirection = 1;
-            }
+            that.div.style.backgroundPosition = "0 -32px";
+            this.walkDirection = 1;
+          }
 
 
 
@@ -251,18 +263,20 @@ var link = function (name, posX, posY) {
 
 
 
-      var monsterXmax = monster1.posX + 14;
-      var monsterXmin = monster1.posX;
-      var monsterYmax = monster1.posY + 14;
-      var monsterYmin = monster1.posY;
+      var monsterXmax = monster1.posX + 40;
+      var monsterXmin = monster1.posX - 10;
+      var monsterYmax = monster1.posY + 40;
+      var monsterYmin = monster1.posY - 10;
 
       console.log(monsterYmax + " mob y max");
+      console.log(monsterXmax + " mob X max");
       console.log(monsterYmin + " mob y min");
+      console.log(monsterXmin + " mob X min");
       console.log(newPosX + " link x");
       console.log(newPosY + " link y");
 
 
-      if ((newPosY >= monsterYmin && newPosY <= monsterYmax) && (newPosX >= monsterXmin && newPosX <= monsterXmax)) {
+      if ((newPosY >= monsterYmin && newPosY <= monsterYmax && monster1.life > 0) && (newPosX >= monsterXmin && newPosX <= monsterXmax && monster1.life > 0)) {
 
         this.life -= 1;
         console.log(this.life + ' link life');
@@ -270,6 +284,7 @@ var link = function (name, posX, posY) {
 
 
       if ((map[blockYMin]["val" + blockX] == "pass" && map[blockYMax]["val" + blockX] == "pass") || (map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
+
         return true;
 
       } else {
@@ -291,11 +306,12 @@ var link = function (name, posX, posY) {
 
       e.preventDefault();
       if (e.keyCode == that.cross[4]) {
-        var monsterXmax = monster1.posX + 30;
-        var monsterXmin = monster1.posX;
-        var monsterYmax = monster1.posY + 30;
-        var monsterYmin = monster1.posY;
-
+        var monsterXmax = monster1.posX + 35;
+        var monsterXmin = monster1.posX - 10;
+        var monsterYmax = monster1.posY + 35;
+        var monsterYmin = monster1.posY - 10;
+        console.log(monsterXmax + ' X max mob attk');
+        console.log(monsterXmin + ' X min mob attk');
         if (that.attackDirection == 1) {
 
           that.div.style.backgroundPosition = "-96px -96px";
@@ -307,7 +323,7 @@ var link = function (name, posX, posY) {
           if ((newPosY >= monsterYmin && newPosY <= monsterYmax) && (newPosX >= monsterXmin && newPosX <= monsterXmax)) {
             monsterLife();
           }
-          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
+          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter" && mobCount >= 5)) {
             redirMap2();
           }
 
@@ -321,7 +337,7 @@ var link = function (name, posX, posY) {
           if ((newPosY >= monsterYmin && newPosY <= monsterYmax) && (newPosX >= monsterXmin && newPosX <= monsterXmax)) {
             monsterLife();
           }
-          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
+          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter" && mobCount >= 5)) {
             redirMap2();
           }
 
@@ -335,7 +351,7 @@ var link = function (name, posX, posY) {
           if ((newPosY >= monsterYmin && newPosY <= monsterYmax) && (newPosX >= monsterXmin && newPosX <= monsterXmax)) {
             monsterLife();
           }
-          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
+          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter" && mobCount >= 5)) {
             redirMap2();
           }
 
@@ -349,7 +365,7 @@ var link = function (name, posX, posY) {
           if ((newPosY >= monsterYmin && newPosY <= monsterYmax) && (newPosX >= monsterXmin && newPosX <= monsterXmax)) {
             monsterLife();
           }
-          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
+          if ((map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter" && mobCount >= 5)) {
             redirMap2();
           }
 
@@ -359,14 +375,14 @@ var link = function (name, posX, posY) {
     }, false);
   }
 
-  this.linkDespawn = function ( ){
+  this.linkDespawn = function () {
 
-    setInterval(function(){
+    setInterval(function () {
 
-      if (zelda1.life == 0){
+      if (zelda1.life == 0) {
 
-        if(confirm('You are dead ! Try again ?')){
-        window.location.reload();
+        if (confirm('You are dead ! Try again ?')) {
+          window.location.reload();
         }
 
       }
@@ -427,70 +443,93 @@ var monster = function (posX, posY) {
       that.posX += Math.cos(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
       that.posY += Math.sin(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
       that.div.style.top = that.posY + "px";
-      that.div.style.left = (that.posX - 25) + "px";
+      that.div.style.left = (that.posX - 20) + "px";
 
     }, 50);
   }
 
-    this.mobLife = function(){
+  this.mobLife = function () {
 
-      var that = this;
-      setInterval(function(){
+    var that = this;
+    setInterval(function () {
 
-        if (that.life == 0 && that.lifeStatut == 1){
+      if (that.life == 0 && that.lifeStatut == 1) {
 
-          that.despawnMob();
+        that.despawnMob();
+        that.anotherMob();
+      }
+    }, 1)
 
-        }
-      }, 1)
+  }
 
-    }
+  this.despawnMob = function () {
 
-    this.despawnMob = function () {
+    var that = this;
+    that.div.style.transition = "2s";
+    that.div.style.transform = "rotate(90deg)";
+    setTimeout(function () {
 
-      var that = this;
-      that.div.style.transition = "2s";
-      that.div.style.transform = "rotate(90deg)";
-      setTimeout(function(){
-
-         document.querySelector("body").removeChild(that.div);
-
-      }, 2000)
-
-      that.lifeStatut = 0;
+      var elem = document.querySelector(".mob");
+      elem.classList.remove('mob');
+      document.querySelector("body").removeChild(that.div);
+      elem.remove();
 
 
-    }
+    }, 2000)
 
-    this.createMobLifeBar = function () {
+    that.lifeStatut = 0;
 
-      this.mobLifeBar = document.createElement("div");
-      this.mobLifeBar.setAttribute("class", "mobmobLifeBar");
-      this.mobLifeBar.style.position = "relative";
-      this.mobLifeBar.style.width = "10px";
-      this.mobLifeBar.style.height = "5px";
-      this.mobLifeBar.style.top = "-10px";
-      this.mobLifeBar.style.right = "0px";
-      this.mobLifeBar.style.zIndex = "9";
-      this.mobLifeBar.style.backgroundColor = "#e67e22";
-      this.displayMobLifeBar();
 
-    }
 
-    this.displayMobLifeBar = function() {
 
-      document.querySelector(".mob").appendChild(this.mobLifeBar);
-    }
+  }
 
-    this.refreshMobLifebar = function(){
+  this.anotherMob = function () {
+    mobCount += 1;
+    console.log(mobCount);
 
-        var that = this;
-        setInterval(function(){
+    setTimeout(function () {
 
-            that.mobLifeBar.style.width = (that.life * 10) + "px";
-        }, 1)
+      monster1 = new monster(this.posY, this.posX, this.life);
+      resetMonsterLife();
+      monster1.createMob();
+      monster1.displayMob();
+      monster1.moveMob();
+      monster1.mobLife();
+      monster1.createMobLifeBar();
+      monster1.refreshMobLifebar();
+    }, 3000)
+  }
 
-    }
+  this.createMobLifeBar = function () {
+
+    this.mobLifeBar = document.createElement("div");
+    this.mobLifeBar.setAttribute("class", "mobmobLifeBar");
+    this.mobLifeBar.style.position = "relative";
+    this.mobLifeBar.style.width = "10px";
+    this.mobLifeBar.style.height = "5px";
+    this.mobLifeBar.style.top = "-10px";
+    this.mobLifeBar.style.right = "0px";
+    this.mobLifeBar.style.zIndex = "9";
+    this.mobLifeBar.style.backgroundColor = "#e67e22";
+    this.displayMobLifeBar();
+
+  }
+
+  this.displayMobLifeBar = function () {
+
+    document.querySelector(".mob").appendChild(this.mobLifeBar);
+  }
+
+  this.refreshMobLifebar = function () {
+
+    var that = this;
+    setInterval(function () {
+
+      that.mobLifeBar.style.width = (that.life * 10) + "px";
+    }, 1)
+
+  }
 
 
 
@@ -503,6 +542,7 @@ monster1.moveMob();
 monster1.mobLife();
 monster1.createMobLifeBar();
 monster1.refreshMobLifebar();
+
 
 
 zelda1.attackDirection = [];
