@@ -48,6 +48,8 @@ var link = function (name, posX, posY) {
   this.cross = new Array();
   this.transform = new Array();
   this.div;
+  this.lifebar;
+  this.heart;
   this.attackDirection;
   this.life = 10;
 
@@ -60,12 +62,71 @@ var link = function (name, posX, posY) {
 
     this.afficherLink();
 
-
   }
 
   this.afficherLink = function () {
     document.querySelector("body").appendChild(this.div);
   }
+
+  this.linkLife = function () {
+
+    this.lifebar = document.createElement("div");
+    this.lifebar.setAttribute("class", "lifebar");
+    this.lifebar.style.position = "absolute";
+    this.lifebar.style.width = "100px";
+    this.lifebar.style.height = "10px";
+    this.lifebar.style.top = "0";
+    this.lifebar.style.right = "0";
+    this.lifebar.style.zIndex = "9";
+    this.lifebar.style.backgroundColor = "red";
+    this.displayLifeBar();
+
+  }
+
+  this.displayLifeBar = function() {
+
+    document.querySelector("body").appendChild(this.lifebar);
+  }
+
+  this.refreshLifebar = function(){
+
+      var that = this;
+      setInterval(function(){
+
+          that.lifebar.style.width = (that.life * 10) + "px";
+      }, 1)
+
+  }
+
+  this.createHeart = function(){
+
+    this.heart = document.createElement("div");
+    this.heart.setAttribute("class", "heart");
+    this.heart.style.top = Math.floor(Math.random() * 300) + "px";
+    this.heart.style.left = Math.floor(Math.random() * 300) + "px";
+    this.displayHeart();
+
+  }
+
+  this.displayHeart = function() {
+
+    document.querySelector("body").appendChild(this.heart);
+  }
+
+  this.addLife = function() {
+
+    var that = this;
+    setInterval(function(){
+
+      if (that.posX && that.posY == that.heart.style.top && that.heart.style.left)
+      {
+
+        console.log('LOOOURD')
+      }
+    }, 1)
+  }
+
+
 
 
   this.bougerLink = function () {
@@ -276,8 +337,13 @@ var zelda1 = new link("Pierre", 465, 265);
 zelda1.cross = [122, 100, 115, 113, 32];
 zelda1.transform = [101, 97];
 zelda1.createLink();
+zelda1.linkLife();
+zelda1.refreshLifebar();
 zelda1.linkDespawn();
 zelda1.bougerLink();
+zelda1.createHeart();
+zelda1.addLife();
+
 
 
 // Mobs
@@ -321,16 +387,17 @@ var monster = function (posX, posY) {
   }
 
 
+  this.mobDespawn = function(){
 
-  this.mobDespawn = function(life) {
+    console.log(monster1.life);
+    if (monster1.life == 2)(
 
-    if (this.life == 0){
-
-      alert('toto');
-
-      }
-
+      console.log("lourd")
+    )
   }
+
+
+
 
 }
 
@@ -339,6 +406,7 @@ monster1.createMob();
 monster1.displayMob();
 monster1.moveMob();
 monster1.mobDespawn();
+
 
 zelda1.attackDirection = [];
 zelda1.attack();

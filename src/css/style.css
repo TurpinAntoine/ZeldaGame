@@ -55,7 +55,8 @@ body{
   display:block;
   background-repeat: no-repeat;
   position:absolute;
-  background-position: -32px 0px; 
+  background-position: -32px 0px;
+  z-index: 3;
 }
 
 .mob{
@@ -64,9 +65,21 @@ body{
   height:32px;
   display:block;
   background-repeat: no-repeat;
-  position:absolute; 
+  position:absolute;
 }
 
+.heart {
+
+  width: 10px;
+  height: 10px;
+  background-image:url(../image/heart.png);
+  display: block;
+  z-index: 1;
+  position: absolute;
+
+
+
+}
 
 /******** MAP 2 *********/
 
