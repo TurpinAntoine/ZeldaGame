@@ -321,11 +321,10 @@ var monster = function (posX, posY) {
 
 }
 
-var monster1 = new monster(this.posY, this.posX, this.life);
+var monster1 = new monster(this.posY, this.posX);
 monster1.createMob();
 monster1.displayMob();
 monster1.moveMob();
-
 
 zelda1.attackDirection = [];
 zelda1.attack();
