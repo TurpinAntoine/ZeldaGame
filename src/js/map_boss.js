@@ -141,8 +141,8 @@ var link = function (name, posX, posY) {
 
     this.heart = document.createElement("div");
     this.heart.setAttribute("class", "heart");
-    this.heart.style.top = Math.floor(Math.random() * 800) + "px";
-    this.heart.style.left = Math.floor(Math.random() * 800) + "px";
+    this.heart.style.top = Math.floor(Math.random() * 250) + "px";
+    this.heart.style.left = Math.floor(Math.random() * 600) + "px";
     this.displayHeart();
 
   }
