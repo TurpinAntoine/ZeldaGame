@@ -180,10 +180,6 @@ var link = function (name, posX, posY) {
   }
   this.attack = function () {
 
-
-
-
-
     var that = this;
     window.addEventListener('keypress', function (e) {
 
@@ -258,6 +254,21 @@ var link = function (name, posX, posY) {
     }, false);
   }
 
+  this.linkDespawn = function ( ){
+
+    setInterval(function(){
+
+      if (zelda1.life == 0){
+
+        if(confirm('You are dead ! Try again ?')){
+        window.location.reload();
+        }
+
+      }
+    }, 100)
+
+  }
+
 
 }
 
@@ -265,40 +276,37 @@ var zelda1 = new link("Pierre", 465, 265);
 zelda1.cross = [122, 100, 115, 113, 32];
 zelda1.transform = [101, 97];
 zelda1.createLink();
-//zelda1.createTest();
+zelda1.linkDespawn();
 zelda1.bougerLink();
 
 
-// Mobs 
+// Mobs
 
 var monster = function (posX, posY) {
 
   this.posX = Math.floor(Math.random() * 800);
   this.posY = Math.floor(Math.random() * 800);
   this.div;
-  this.life = 1;
+  this.life = 3;
 
   this.createMob = function () {
 
     this.div = document.createElement("div");
     this.div.setAttribute("class", "mob");
-    this.div.style.backgroundPosition = "-128px -32px";
+    this.div.style.backgroundPosition = "-125px 0px";
     this.div.style.top = this.posY + "px";
     this.div.style.left = this.posX + "px";
     this.displayMob();
+
   }
 
   this.displayMob = function () {
 
     document.querySelector("body").appendChild(this.div);
 
-
   }
 
   this.moveMob = function () {
-
-
-
 
     var that = this;
 
@@ -307,20 +315,30 @@ var monster = function (posX, posY) {
       that.posX += Math.cos(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
       that.posY += Math.sin(Math.atan2(zelda1.posY - that.posY, zelda1.posX - that.posX)) * 2;
       that.div.style.top = that.posY + "px";
-      that.div.style.left = that.posX + "px";
-
-
+      that.div.style.left = (that.posX - 25) + "px";
 
     }, 50);
   }
 
 
+
+  this.mobDespawn = function(life) {
+
+    if (this.life == 0){
+
+      alert('toto');
+
+      }
+
+  }
+
 }
 
-var monster1 = new monster(this.posY, this.posX);
+var monster1 = new monster(this.posY, this.posX, this.life);
 monster1.createMob();
 monster1.displayMob();
 monster1.moveMob();
+monster1.mobDespawn();
 
 zelda1.attackDirection = [];
 zelda1.attack();

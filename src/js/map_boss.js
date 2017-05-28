@@ -273,12 +273,12 @@ zelda1.createLink();
 zelda1.bougerLink();
 
 
-// Mobs 
+// Mobs
 
 var monster = function (posX, posY) {
 
   this.posX = Math.floor(Math.random() * 800);
-  this.posY = Math.floor(Math.random() * 800);
+  this.posY = Math.floor(Math.random() * 250);
   this.div;
   this.life = 1;
 
@@ -286,7 +286,7 @@ var monster = function (posX, posY) {
 
     this.div = document.createElement("div");
     this.div.setAttribute("class", "mob");
-    this.div.style.backgroundPosition = "-128px -32px";
+    this.div.style.backgroundPosition = "-125px 0px";
     this.div.style.top = this.posY + "px";
     this.div.style.left = this.posX + "px";
     this.displayMob();
@@ -321,10 +321,11 @@ var monster = function (posX, posY) {
 
 }
 
-var monster1 = new monster(this.posY, this.posX);
+var monster1 = new monster(this.posY, this.posX, this.life);
 monster1.createMob();
 monster1.displayMob();
 monster1.moveMob();
+
 
 zelda1.attackDirection = [];
 zelda1.attack();
