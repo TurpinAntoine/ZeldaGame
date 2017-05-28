@@ -3,6 +3,20 @@ var mydata2 = map2;
 var grid = 50;
 var mobCount = 0;
 
+var mobDeath = document.getElementById('mobDeath');
+var mobHit = document.getElementById('mobHit');
+var mobSlash = document.getElementById('mobSlash');
+var bossHit = document.getElementById('bossHit');
+var linkSlash = document.getElementById('linkSlash');
+var linkDie = document.getElementById('linkDie');
+var linkHit = document.getElementById('linkHit');
+var linkSurprise = document.getElementById('linkSurprise');
+var secretSound = document.getElementById('secretSound');
+var theme1 = document.getElementById('theme1');
+
+
+theme1.play();
+
 function redirMap2() {
   document.location.href = "map2.html";
 }
@@ -12,11 +26,13 @@ function linkLife()  {
   monster1.posY -= 30;
   console.log(this.life + ' link life');
 
+
 }
 
 function monsterLife() {
   monster1.life -= 1;
   console.log(monster1.life + ' mob life');
+  mobHit.play();
 }
 
 function resetMonsterLife() {
@@ -50,7 +66,7 @@ var test = new maping()
 test.createTest();
 
 
-    
+
 
 var posX = posX;
 var posY = posY;
@@ -277,7 +293,8 @@ var link = function (name, posX, posY) {
 
 
       if ((newPosY >= monsterYmin && newPosY <= monsterYmax && monster1.life > 0) && (newPosX >= monsterXmin && newPosX <= monsterXmax && monster1.life > 0)) {
-
+        mobSlash.play();
+        linkHit.play();
         this.life -= 1;
         console.log(this.life + ' link life');
       }
@@ -313,7 +330,7 @@ var link = function (name, posX, posY) {
         console.log(monsterXmax + ' X max mob attk');
         console.log(monsterXmin + ' X min mob attk');
         if (that.attackDirection == 1) {
-
+          linkSlash.play();
           that.div.style.backgroundPosition = "-96px -96px";
           setTimeout(function () {
             that.div.style.backgroundPosition = "-64px -96px"
@@ -328,7 +345,7 @@ var link = function (name, posX, posY) {
           }
 
         } else if (that.attackDirection == 2) {
-
+          linkSlash.play();
           that.div.style.backgroundPosition = "-96px -64px";
           setTimeout(function () {
             that.div.style.backgroundPosition = "-64px -64px"
@@ -342,7 +359,7 @@ var link = function (name, posX, posY) {
           }
 
         } else if (that.attackDirection == 3) {
-
+          linkSlash.play();
           that.div.style.backgroundPosition = "-96px 0";
           setTimeout(function () {
             that.div.style.backgroundPosition = "-64px 0"
@@ -356,7 +373,7 @@ var link = function (name, posX, posY) {
           }
 
         } else if (that.attackDirection == 4) {
-
+          linkSlash.play();
           that.div.style.backgroundPosition = "-96px -32px";
           setTimeout(function () {
             that.div.style.backgroundPosition = "0px -32px"
@@ -380,7 +397,7 @@ var link = function (name, posX, posY) {
     setInterval(function () {
 
       if (zelda1.life == 0) {
-
+        linkDie.play();
         if (confirm('You are dead ! Try again ?')) {
           window.location.reload();
         }
@@ -454,7 +471,7 @@ var monster = function (posX, posY) {
     setInterval(function () {
 
       if (that.life == 0 && that.lifeStatut == 1) {
-
+        mobDeath.play();
         that.despawnMob();
         that.anotherMob();
       }
@@ -486,6 +503,9 @@ var monster = function (posX, posY) {
 
   this.anotherMob = function () {
     mobCount += 1;
+    if (mobCount == 5){
+      secretSound.play();
+    }
     console.log(mobCount);
 
     setTimeout(function () {
@@ -532,8 +552,8 @@ var monster = function (posX, posY) {
   }
 
 
-
 }
+
 
 var monster1 = new monster(this.posY, this.posX, this.life);
 monster1.createMob();

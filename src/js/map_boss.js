@@ -4,6 +4,19 @@ var grid = 50;
 var mobCount = 0; 
 
 
+var bossDeath = document.getElementById('bossDeath')
+var bossHit = document.getElementById('bossHit');
+var linkSlash = document.getElementById('linkSlash');
+var linkDie = document.getElementById('linkDie');
+var linkHit = document.getElementById('linkHit');
+var linkSurprise = document.getElementById('linkSurprise');
+var theme1 = document.getElementById('theme1');
+var theme2 = document.getElementById('theme2');
+var ending = document.getElementById('end');
+
+linkSurprise.play();
+theme2.play();
+
 function linkLife()  {
   zelda1.life -= 2;
   monster1.posY -= 30;
@@ -14,6 +27,7 @@ function linkLife()  {
 function monsterLife() {
   monster1.life -= 1;
   console.log(monster1.life + ' mob life');
+  bossHit.play();
 }
 
 function resetMonsterLife() {
@@ -417,8 +431,8 @@ zelda1.addLife();
 
 var monster = function (posX, posY) {
 
-  this.posX = Math.floor(Math.random() * 800);
-  this.posY = Math.floor(Math.random() * 800);
+  this.posX = 800;
+  this.posY = 150;
   this.div;
   this.life = 10;
   this.lifeStatut = 1;
@@ -461,7 +475,9 @@ var monster = function (posX, posY) {
     setInterval(function () {
 
       if (that.life == 0 && that.lifeStatut == 1) {
-
+        theme2.pause();
+        bossDeath.play();
+        ending.play();
         that.despawnMob();
       }
     }, 1)
