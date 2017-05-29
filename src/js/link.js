@@ -13,6 +13,7 @@ var linkHit = document.getElementById('linkHit');
 var linkSurprise = document.getElementById('linkSurprise');
 var secretSound = document.getElementById('secretSound');
 var theme1 = document.getElementById('theme1');
+var hearthPick = document.getElementById('hearthPick');
 
 
 theme1.play();
@@ -305,10 +306,9 @@ var link = function (name, posX, posY) {
       console.log(HeartYmin + ' Y hearth ');
       console.log(HeartXmin + ' X hearth ');
       
-      function testHearth() {
 
       if ((newPosX >= HeartYmin && newPosX <= HeartYmax && this.life != 10) && (newPosY >= HeartXmin && newPosY <= HeartXmax && this.life != 10)) {
-        //        hearth.play();
+        hearthPick.play();
         this.life += 1;
         console.log(this.life + ' link life up');
 
