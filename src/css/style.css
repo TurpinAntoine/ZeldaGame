@@ -12,6 +12,15 @@ body{
   right: 0;
   height: 100%;
   width: 540px;
+  color:white;
+
+}
+
+.mob-counter {
+
+  position: relative;
+  top:50px;
+  font-size: 30px;
 }
 
 /******** MAP 1 *********/

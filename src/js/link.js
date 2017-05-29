@@ -305,7 +305,7 @@ var link = function (name, posX, posY) {
       console.log(HeartYmax + ' Y hearth + 100');
       console.log(HeartYmin + ' Y hearth ');
       console.log(HeartXmin + ' X hearth ');
-      
+
 
       if ((newPosX >= HeartYmin && newPosX <= HeartYmax && this.life != 10) && (newPosY >= HeartXmin && newPosY <= HeartXmax && this.life != 10)) {
         hearthPick.play();
@@ -316,7 +316,7 @@ var link = function (name, posX, posY) {
         pathHearth.classList.remove('heart');
         pathHearth.remove();
         if (this.life == 10) {
-          
+
         }
 
       }
@@ -574,6 +574,19 @@ var monster = function (posX, posY) {
 
   }
 
+  this.displayMobCount = function()
+  {
+
+    setInterval(function(){
+
+
+      document.querySelector('.mob-counter').innerHTML = mobCount;
+
+
+    }, 1)
+
+  }
+
 
 }
 
@@ -585,6 +598,7 @@ monster1.moveMob();
 monster1.mobLife();
 monster1.createMobLifeBar();
 monster1.refreshMobLifebar();
+monster1.displayMobCount();
 
 
 
