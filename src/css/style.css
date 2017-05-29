@@ -10,17 +10,27 @@ body{
   position: absolute;
   float: right;
   right: 0;
-  height: 100%;
-  width: 540px;
+  height: 900px;
+  width: 525px;
   color:white;
 
 }
 
-.mob-counter {
+.mob-counter-div {
 
   position: relative;
-  top:50px;
-  font-size: 30px;
+  top:200px;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.rightMenu p {
+
+  top:250px;
+  position: relative;
+  padding-left:20px;
+  font-size: 20px;
+
 }
 
 /******** MAP 1 *********/
@@ -158,15 +168,19 @@ body{
     src:url(../font/TLOZ-Minish-Cap-A-Link-to-the-Past-Four-Sword.ttf);
 
 }
+
+
 div.position{
   position: relative;
   width: 500px;
   height: 356px;
+  margin-left : 45%;
+  margin-top: 15%;
 }
 
 
 .victory{
-  width: 500px;
+  width: 600px;
 }
 
 .btn {
@@ -180,8 +194,8 @@ div.position{
   position: absolute;
   padding: 20px;
   cursor: pointer;
-  top: 68%;
-  left: 50%;
+  top: 82%;
+  left: 60%;
   transform: translateX(-50%);
 }
 

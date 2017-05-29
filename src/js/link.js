@@ -296,10 +296,10 @@ var link = function (name, posX, posY) {
       console.log(newHeartPosY + ' Y hearth');
       console.log(newHeartPosX + ' X hearth');
 
-      var HeartXmax = Number(newHeartPosX) + 100;
-      var HeartYmax = Number(newHeartPosY) + 100;
-      var HeartXmin = Number(newHeartPosX) - 20;
-      var HeartYmin = Number(newHeartPosY) - 8;
+       HeartXmax = Number(newHeartPosX) + 100;
+       HeartYmax = Number(newHeartPosY) + 100;
+       HeartXmin = Number(newHeartPosX) - 20;
+       HeartYmin = Number(newHeartPosY) - 8;
 
       console.log(HeartXmax + ' X hearth + 100');
       console.log(HeartYmax + ' Y hearth + 100');
@@ -318,6 +318,11 @@ var link = function (name, posX, posY) {
         if (this.life == 10) {
 
         }
+      setTimeout(function () {
+        
+        zelda1.createHeart();
+      
+    }, 1)
 
       }
 
@@ -442,7 +447,7 @@ zelda1.refreshLifebar();
 zelda1.linkDespawn();
 zelda1.bougerLink();
 zelda1.createHeart();
-zelda1.addLife();
+
 
 
 

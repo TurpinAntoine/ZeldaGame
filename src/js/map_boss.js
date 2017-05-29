@@ -6,6 +6,7 @@ var mobCount = 0;
 
 var bossDeath = document.getElementById('bossDeath')
 var bossHit = document.getElementById('bossHit');
+var bossSlash = document.getElementById('bossSlash');
 var linkSlash = document.getElementById('linkSlash');
 var linkDie = document.getElementById('linkDie');
 var linkHit = document.getElementById('linkHit');
@@ -13,6 +14,8 @@ var linkSurprise = document.getElementById('linkSurprise');
 var theme1 = document.getElementById('theme1');
 var theme2 = document.getElementById('theme2');
 var ending = document.getElementById('end');
+var hearthPick = document.getElementById('hearthPick');
+
 
 linkSurprise.play();
 theme2.play();
@@ -141,8 +144,8 @@ var link = function (name, posX, posY) {
 
     this.heart = document.createElement("div");
     this.heart.setAttribute("class", "heart");
-    this.heart.style.top = Math.floor(Math.random() * 250) + "px";
-    this.heart.style.left = Math.floor(Math.random() * 600) + "px";
+    heartPosX = this.heart.style.top = Math.floor(Math.random() * 800) + "px";
+    heartPosY = this.heart.style.left = Math.floor(Math.random() * 800) + "px";
     this.displayHeart();
 
   }
@@ -298,13 +301,55 @@ var link = function (name, posX, posY) {
 
 
       if ((newPosY >= monsterYmin && newPosY <= monsterYmax && monster1.life > 0) && (newPosX >= monsterXmin && newPosX <= monsterXmax && monster1.life > 0)) {
-
+        bossSlash.play();
+        linkHit.play();
         this.life -= 1;
         console.log(this.life + ' link life');
       }
 
 
-      if ((map2[blockYMin]["val" + blockX] == "pass1" && map2[blockYMax]["val" + blockX] == "pass1") || (map2[blockYMin]["val" + blockX] == "enter1" && map2[blockYMax]["val" + blockX] == "enter1")) {
+      var newHeartPosX = heartPosX.match(/\d+/)[0];
+      var newHeartPosY = heartPosY.match(/\d+/)[0];
+      console.log(newPosY + " New pos Y");
+      //      console.log(newPosY + 100 + " New pos Y + 100");
+      console.log(newPosX + " New pos X");
+      //      console.log(newPosX + 100 + " New pos X + 100");
+      console.log(newHeartPosY + ' Y hearth');
+      console.log(newHeartPosX + ' X hearth');
+
+      var HeartXmax = Number(newHeartPosX) + 100;
+      var HeartYmax = Number(newHeartPosY) + 100;
+      var HeartXmin = Number(newHeartPosX) - 20;
+      var HeartYmin = Number(newHeartPosY) - 8;
+
+      console.log(HeartXmax + ' X hearth + 100');
+      console.log(HeartYmax + ' Y hearth + 100');
+      console.log(HeartYmin + ' Y hearth ');
+      console.log(HeartXmin + ' X hearth ');
+
+
+      if ((newPosX >= HeartYmin && newPosX <= HeartYmax && this.life != 10) && (newPosY >= HeartXmin && newPosY <= HeartXmax && this.life != 10)) {
+        hearthPick.play();
+        this.life += 1;
+        console.log(this.life + ' link life up');
+
+        var pathHearth = document.querySelector(".heart");
+        pathHearth.classList.remove('heart');
+        pathHearth.remove();
+        if (this.life == 10) {
+
+        }
+      setTimeout(function () {
+        
+        zelda1.createHeart();
+      
+    }, 1)
+
+      }
+
+
+
+      if ((map[blockYMin]["val" + blockX] == "pass" && map[blockYMax]["val" + blockX] == "pass") || (map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
 
         return true;
 
@@ -480,6 +525,11 @@ var monster = function (posX, posY) {
         bossDeath.play();
         ending.play();
         that.despawnMob();
+        
+        setInterval(function () {
+          document.location.href='ending.html';
+        }, 11000);
+        
       }
     }, 1)
 
