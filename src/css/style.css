@@ -149,3 +149,44 @@ body{
   height: 50px;
   display: inline-block;
 }
+
+
+/*********** ENDING ********/
+
+  @font-face {
+    font-family:'myFont';
+    src:url(../font/TLOZ-Minish-Cap-A-Link-to-the-Past-Four-Sword.ttf);
+
+}
+div.position{
+  position: relative;
+  width: 500px;
+  height: 356px;
+}
+
+
+.victory{
+  width: 500px;
+}
+
+.btn {
+  border-radius: 6px;
+  font-family: 'myFont'; 
+  font-size: 1px;
+  color: #ffffff;
+  font-size: 13px;
+  background: grey;
+  text-decoration: none;
+  position: absolute;
+  padding: 20px;
+  cursor: pointer;
+  top: 68%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn:hover {
+  background: orange;
+  text-decoration: none;
+
+}
