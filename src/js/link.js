@@ -136,8 +136,8 @@ var link = function (name, posX, posY) {
 
     this.heart = document.createElement("div");
     this.heart.setAttribute("class", "heart");
-    this.heart.style.top = Math.floor(Math.random() * 800) + "px";
-    this.heart.style.left = Math.floor(Math.random() * 800) + "px";
+    heartPosX = this.heart.style.top = Math.floor(Math.random() * 800) + "px";
+    heartPosY = this.heart.style.left = Math.floor(Math.random() * 800) + "px";
     this.displayHeart();
 
   }
@@ -152,11 +152,11 @@ var link = function (name, posX, posY) {
     var that = this;
     setInterval(function () {
 
-      if (that.posX && that.posY == that.heart.style.top && that.heart.style.left) {
+      if (((that.posX + 100) >= that.heart.style.top && (that.posX - 20) <= that.heart.style.top) && ((that.posY + 100) >= that.heart.style.left && (that.posY - 20) <= that.heart.style.left)) {
 
         console.log('LOOOURD')
       }
-    }, 1)
+    }, 5000)
   }
 
 
@@ -284,6 +284,43 @@ var link = function (name, posX, posY) {
         this.life -= 1;
         console.log(this.life + ' link life');
       }
+
+
+      var newHeartPosX = heartPosX.match(/\d+/)[0];
+      var newHeartPosY = heartPosY.match(/\d+/)[0];
+      console.log(newPosY + " New pos Y");
+      //      console.log(newPosY + 100 + " New pos Y + 100");
+      console.log(newPosX + " New pos X");
+      //      console.log(newPosX + 100 + " New pos X + 100");
+      console.log(newHeartPosY + ' Y hearth');
+      console.log(newHeartPosX + ' X hearth');
+
+      var HeartXmax = Number(newHeartPosX) + 100;
+      var HeartYmax = Number(newHeartPosY) + 100;
+      var HeartXmin = Number(newHeartPosX) - 20;
+      var HeartYmin = Number(newHeartPosY) - 8;
+
+      console.log(HeartXmax + ' X hearth + 100');
+      console.log(HeartYmax + ' Y hearth + 100');
+      console.log(HeartYmin + ' Y hearth ');
+      console.log(HeartXmin + ' X hearth ');
+      
+      function testHearth() {
+
+      if ((newPosX >= HeartYmin && newPosX <= HeartYmax && this.life != 10) && (newPosY >= HeartXmin && newPosY <= HeartXmax && this.life != 10)) {
+        //        hearth.play();
+        this.life += 1;
+        console.log(this.life + ' link life up');
+
+        var pathHearth = document.querySelector(".heart");
+        pathHearth.classList.remove('heart');
+        pathHearth.remove();
+        if (this.life == 10) {
+          
+        }
+
+      }
+
 
 
       if ((map[blockYMin]["val" + blockX] == "pass" && map[blockYMax]["val" + blockX] == "pass") || (map[blockYMin]["val" + blockX] == "enter" && map[blockYMax]["val" + blockX] == "enter")) {
@@ -489,7 +526,7 @@ var monster = function (posX, posY) {
 
   this.anotherMob = function () {
     mobCount += 1;
-    if (mobCount == 5){
+    if (mobCount == 5) {
       secretSound.play();
     }
     console.log(mobCount);
